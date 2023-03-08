@@ -4,6 +4,7 @@ from nltk import word_tokenize
 from nltk.probability import FreqDist
 import numpy as np
 from datascience import *
+nltk.download('punkt')
 import warnings
 warnings.simplefilter('ignore', FutureWarning)
 from nltk.text import Text
