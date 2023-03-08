@@ -1,0 +1,62 @@
+<h4>Welcome back, <%= @username %></h4>
+<div><a href="/user_sign_out">Sign out</a></div>
+
+<h2><a href="/projects">Create a new Project</a></h2>
+
+<h2>Ongoing Projects</h2>
+<table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Created at</th>
+    <th>Last edited at</th>
+  </tr>
+
+  <% @ongoing_projects.each do |project| %>
+  <tr>
+    <td>
+      <h2><a href="projects/<%= project.id %>"><%= project.title %></a></h2>
+    </td>
+
+    <td>
+      <%= project.created_at %>
+    </td>
+
+    <td>
+      <%= project.updated_at %>
+    </td>
+
+  </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<form action="insert_project_record">
+
+<h2>Completed Projects</h2>
+
+<table border="1">
+  <% @completed_projects.each do |project| %>
+  <tr>
+    <td>
+      <h2><a href="projects/<%= project.id %>"><%= project.title %></a></h2>
+    </td>
+
+    <td>
+      <%= project.created_at %>
+    </td>
+
+    <td>
+      <%= project.updated_at %>
+    </td>
+
+  </tr>
+  <% end %>
+
+
+</table>
+
+
+<p></p>
+
+  <%= `python3 word_concordance.py` %>

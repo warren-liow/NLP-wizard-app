@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <h1>
+      Create a New Project
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new project
+    </h2>
+
+    <form action="/insert_project" method="post">
+      <div>
+        <label for="title_box">
+          First, choose a suitable title for your project:
+        </label>
+      </div>
+      <div>
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <p></p>
+
+      <div>
+        <input type="hidden" id="completionstatus_box" name="query_completionstatus" value="0">
+
+        <label for="completionstatus_box"></label>
+      </div>
+
+      <p></p>
+      <div>
+        <label for="text_box">
+          Next, input the text you would like to conduct NLP research on below:
+        </label>
+      </div>
+      <div>
+        <textarea rows="10" cols="50" id="text_box" name="query_text"></textarea>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+        </label>
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= session[:user_id] %>">
+      </div>
+
+      <button>
+        Create project
+      </button>
+    </form>
+  </div>
+</div>

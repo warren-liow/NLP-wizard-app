@@ -1,0 +1,41 @@
+<div>
+  <div>
+    <h1>
+      <%= @the_project.title %> 
+    </h1>
+  </div>
+
+What does that function do?
+<% if @function == "count"%>
+  Count the number of times this word appears in the text.
+<% elsif @function == "similar" %>
+  Distributional similarity: find other words which appear in the same contexts as the specified word; list most similar words first.
+<% elsif @function == "lexical diversity"%>
+  Calculate the lexical diversity of the text, or in other words how varied the vocabulary in the text is. The text is first tokenized and then stripped of punctuation for a more accurate measurement.
+<% else %>
+  Finds the most common words (up to 50) in the text. 
+<% end %>
+
+
+<p><h4>Executing "<%= @function %>"...</h4></p>
+
+
+<% if @function == "count"%>
+  Number of times "<%= @word%>" appears is: 
+<% elsif @function == "similar" %>
+  Some similar words to "<%= @word%>"" in the given text are:
+<% elsif @function == "most common words"%>
+  Most common words in the text are:
+<% end %>
+
+<%= `python3 NLP.py "#{@text}" "#{@function}" "#{@word}"` %>
+</div>
+
+<br>
+  <div>
+    <form action="/projects/<%= @the_project.id %>">
+      <button>
+        Return to previous page!
+      </button>
+    </form>
+  </div>

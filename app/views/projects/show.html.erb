@@ -1,0 +1,137 @@
+<div>
+  <div>
+    <h1>
+      <%= @the_project.title %> 
+    </h1>
+
+    <div>
+       <form action="/workspace" method="post">
+      <div>
+        <label for="query_function">Select a function:</label>
+          <select name="query_function" id="query_function">
+            <option value="count">Count instances of a given word</option>
+            <option value="similar">Find similar words to a given word</option>
+            <option value="lexical diversity">Find the lexical diversity</option>
+            <option value="most common words">Find the most common words</option>
+            </select>
+      </div>
+      <p></p>
+
+      <div>
+        <input type="hidden" id="id_box" name="query_id" value="<%= @the_project.id %>">
+
+        <label for="id_box"></label>
+      </div>
+      <p></p>
+
+      <div>
+        <input type="hidden" id="text_box" name="query_text" value="<%= @the_project.text %>">
+        <label for="text_box"></label>
+      </div>
+
+      <p></p>
+      <div>
+        <label for="word">If you selected Count or Similarity, choose a word. Otherwise, leave blank:
+        </label>
+        <input type="text" id="word" name="query_word" placeholder="Search for a word">
+      </div>
+
+      <p></p>
+
+      <button>
+        Research!
+      </button>
+    </form>
+    </div>
+
+    <p>
+    </p>
+
+    <div>
+      <div>
+        <a href="/home">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_project/<%= @the_project.id %>">
+          Delete project forever
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Text
+      </dt>
+      <dd>
+        <%= @the_project.text %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_project.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_project.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit project
+    </h2>
+
+    <form action="/modify_project/<%= @the_project.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_project.title %>">
+      </div>
+
+      <div>
+        <label for="text_box">
+          Text
+        </label>
+
+        <input type="text_area" id="text_box" name="query_text" value="<%= @the_project.text %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+        </label>
+
+        <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_project.user_id %>">
+      </div>
+
+
+      <div>
+        <label for="completionstatus_box">
+            Mark as completed?
+        </label>
+        <input type="checkbox" id="completionstatus_box" name="query_completionstatus" value="1" <%= "checked" if @the_project.completionstatus %>>
+      </div>
+
+      <button>
+        Update project
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
